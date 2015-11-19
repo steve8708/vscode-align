@@ -1,7 +1,7 @@
 {
   "name": "Align",
   "description": "Align text in vscode like the atom-alignment package",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "publisher": "steve8708",
   "icon": "./icon.png",
   "repository": {
@@ -31,7 +31,19 @@
       "properties": {
         "align.beforeSeparators": {
           "type": "array",
-          "default": ["=", "from", "+=", "-=", "*=", "/=", "?=", "|=", "%=", ".=", "=>"],
+          "default": [
+            "=",
+            "from",
+            "+=",
+            "-=",
+            "*=",
+            "/=",
+            "?=",
+            "|=",
+            "%=",
+            ".=",
+            "=>"
+          ],
           "description": "Separators where space is added before",
           "items": {
             "type": "string"
@@ -39,7 +51,9 @@
         },
         "align.afterSeparators": {
           "type": "array",
-          "default": [":"],
+          "default": [
+            ":"
+          ],
           "description": "Separators where space is added afterward",
           "items": {
             "type": "string"
@@ -47,12 +61,14 @@
         }
       }
     },
-    "keybindings": [{
-      "command": "extension.align",
-      "key": "ctrl+alt+a",
-      "mac": "ctrl+cmd+a",
-      "when": "editorTextFocus"
-    }]
+    "keybindings": [
+      {
+        "command": "extension.align",
+        "key": "ctrl+alt+a",
+        "mac": "ctrl+cmd+a",
+        "when": "editorTextFocus"
+      }
+    ]
   },
   "scripts": {
     "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
