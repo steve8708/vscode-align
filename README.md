@@ -19,18 +19,3 @@ var lodash     = require('lodash');
 var typescript = require('typescript');
 var angular    = require('angular');
 ```
-
-```typescript
-import * as express from require('express');
-import * as lodash from require('lodash');
-import * as typescript from require('typescript');
-import * as angular from require('angular');
-```
-
-```typescript
-import * as express    from require('express');
-import * as lodash     from require('lodash');
-import * as typescript from require('typescript');
-import * as angular    from require('angular');
-```
-
