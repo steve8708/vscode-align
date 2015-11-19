@@ -1,0 +1,69 @@
+{
+  "name": "Align",
+  "description": "Align text in vscode like the atom-alignment package",
+  "version": "0.0.1",
+  "publisher": "steve8708",
+  "icon": "./icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/steve8708/vscode-align"
+  },
+  "engines": {
+    "vscode": "^0.10.1"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:extension.align"
+  ],
+  "main": "./out/src/extension",
+  "contributes": {
+    "commands": [
+      {
+        "command": "extension.align",
+        "title": "Align"
+      }
+    ],
+    "configuration": {
+      "type": "object",
+      "title": "Align extension configuration",
+      "properties": {
+        "align.beforeSeparators": {
+          "type": "array",
+          "default": ["=", "from", "+=", "-=", "*=", "/=", "?=", "|=", "%=", ".=", "=>"],
+          "description": "Separators where space is added before",
+          "items": {
+            "type": "string"
+          }
+        },
+        "align.afterSeparators": {
+          "type": "array",
+          "default": [":"],
+          "description": "Separators where space is added afterward",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "keybindings": [{
+      "command": "extension.align",
+      "key": "ctrl+alt+a",
+      "mac": "ctrl+cmd+a",
+      "when": "editorTextFocus"
+    }]
+  },
+  "scripts": {
+    "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+    "compile": "node ./node_modules/vscode/bin/compile -watch -p ./"
+  },
+  "devDependencies": {
+    "typescript": "^1.6.2",
+    "vscode": "0.10.x"
+  },
+  "dependencies": {
+    "lodash": "^3.10.1",
+    "text-table": "^0.2.0"
+  }
+}
