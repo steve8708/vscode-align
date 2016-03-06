@@ -2,7 +2,7 @@
   "name": "Align",
   "displayName": "Align",
   "description": "Align text in vscode like the atom-alignment package",
-  "version": "0.0.6",
+  "version": "0.1.0",
   "publisher": "steve8708",
   "icon": "icon.png",
   "repository": {
@@ -11,7 +11,7 @@
   },
   "keywords": [
     "align",
-    "alingment",
+    "alignment",
     "format"
   ],
   "homepage": "https://github.com/steve8708/vscode-align",
@@ -39,32 +39,32 @@
       "type": "object",
       "title": "Align extension configuration",
       "properties": {
-        "align.beforeSeparators": {
-          "type": "array",
-          "default": [
-            "=",
-            "from",
-            "+=",
-            "-=",
-            "*=",
-            "/=",
-            "?=",
-            "|=",
-            "%=",
-            ".=",
-            "=>"
-          ],
-          "description": "Separators where space is added before",
-          "items": {
-            "type": "string"
-          }
-        },
-        "align.afterSeparators": {
+        "align.leftSeparators": {
           "type": "array",
           "default": [
             ":"
           ],
-          "description": "Separators where space is added afterward",
+          "items": {
+            "type": "string"
+          }
+        },
+        "align.rightSeparators": {
+          "type": "array",
+          "default": ["=", "+=", "-=", "*=", "/=", "?=", "|=", "%=", ".=", "=>"],
+          "items": {
+            "type": "string"
+          }
+        },
+        "align.spaceSeparators": {
+          "type": "array",
+          "default": ["=", "+=", "-=", "*=", "/=", "?=", "|=", "%=", ".=", "=>"],
+          "items": {
+            "type": "string"
+          }
+        },
+        "align.ignoreSeparators": {
+          "type": "array",
+          "default": ["::"],
           "items": {
             "type": "string"
           }
@@ -89,7 +89,6 @@
     "vscode": "0.10.x"
   },
   "dependencies": {
-    "lodash": "^3.10.1",
-    "text-table": "^0.2.0"
+    "alignment": "0.0.1"
   }
 }
