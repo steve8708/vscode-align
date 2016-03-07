@@ -21,7 +21,7 @@ export function alignSelections() {
     let selections = editor.selections;
     
     selections.forEach((selection) => {
-        let range = new Range(selection.start, selection.end);
+        let range = new Range(selection.start.line, 0, selection.end.line, 999);
         let text = editor.document.getText(range);
         
         let newBlock = block(text, { 
