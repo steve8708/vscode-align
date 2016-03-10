@@ -89,6 +89,6 @@
     "vscode": "0.10.x"
   },
   "dependencies": {
-    "alignment": "0.1.0"
+    "alignment": "0.0.1"
   }
 }
