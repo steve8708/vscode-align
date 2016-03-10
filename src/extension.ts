@@ -1,5 +1,5 @@
 import { window, ExtensionContext, commands, Range, workspace } from 'vscode';
-import { blockAlign, cursorAlign } from 'alignment';
+import { block } from 'alignment';
 
 const config = workspace.getConfiguration('align');
 
@@ -21,22 +21,33 @@ export function activate(context: ExtensionContext) {
 export function alignCursors() {
     let editor = window.activeTextEditor;
     let selections = editor.selections;
-    let lines = new Array<string>();
     let cursors = new Array<number>();
     
     selections.forEach((selection, idx) => {
-        lines[idx] = editor.document.lineAt(selection.active.line).text;
         cursors[idx] = selection.active.character;
     });
 
-    let padLen = cursorAlign(lines, cursors);
+    let padLen = cursorPadding(cursors);
     
     editor.edit((editBuilder) => {
         selections.forEach((selection, idx) => {
             editBuilder.insert(selection.active, Array(padLen[idx] + 1).join(' '));
         })
     })
+    
+    function cursorPadding(cursors: number[]): number[] {  
+        let padLen = new Array<number>();
+        
+        const maxIndent = Math.max(...cursors);
+        
+        cursors.forEach((pos, idx) => {
+            padLen[idx] = maxIndent - pos;
+        });
+        
+        return padLen;
+    }
 }
+
 
 export function alignSelections() {
     const leftConfig = <string[]>config.get('leftSeparators');
@@ -52,7 +63,7 @@ export function alignSelections() {
         let range = new Range(selection.start.line, 0, selection.end.line, maxLen);
         let text = editor.document.getText(range);
         
-        let newBlock = blockAlign(text, { 
+        let newBlock = block(text, { 
             leftSeparators: leftConfig,
             rightSeparators: rightConfig,
             ignoreSeparators: ignoreConfig,
