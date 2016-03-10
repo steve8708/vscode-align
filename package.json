@@ -2,7 +2,7 @@
   "name": "Align",
   "displayName": "Align",
   "description": "Align text in vscode like the atom-alignment package",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "publisher": "steve8708",
   "icon": "icon.png",
   "repository": {
@@ -89,6 +89,6 @@
     "vscode": "0.10.x"
   },
   "dependencies": {
-    "alignment": "0.0.1"
+    "alignment": "0.1.0"
   }
 }
